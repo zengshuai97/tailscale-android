@@ -20,9 +20,9 @@ jobs:
 
       - name: modify
         run: |
-          sed -i '/b.backend.Start(ipn.Options/,+2d' ./cmd/tailscale/backend.go
-          sed -i '/backend.SetNotifyCallback/a\ \ \ \ \ \ \ \ prefs := ipn.NewPrefs()\n\ \ \ \ \ \ \ \ prefs.ControlURL = "'"${{ secrets.HEADSCALE_URL }}"'"\n\ \ \ \ \ \ \ \ opts := ipn.Options{\n\ \ \ \ \ \ \ \ StateKey: "ipn-android",\n\ \ \ \ \ \ \ \ \ \ \ \ UpdatePrefs: prefs,\n\ \ \ \ \ \ \ \ }\n\ \ \ \ \ \ \ \ return b.backend.Start(opts)' ./cmd/tailscale/backend.go
-          sed -i 's/Sign in with other/Sign in with Headscale/g' ./cmd/tailscale/ui.go
+          sed -i '/b.backend.Start(ipn.Options/,+2d' tailscale-android/cmd/tailscale/backend.go
+          sed -i '/backend.SetNotifyCallback/a\ \ \ \ \ \ \ \ prefs := ipn.NewPrefs()\n\ \ \ \ \ \ \ \ prefs.ControlURL = "'"${{ secrets.HEADSCALE_URL }}"'"\n\ \ \ \ \ \ \ \ opts := ipn.Options{\n\ \ \ \ \ \ \ \ StateKey: "ipn-android",\n\ \ \ \ \ \ \ \ \ \ \ \ UpdatePrefs: prefs,\n\ \ \ \ \ \ \ \ }\n\ \ \ \ \ \ \ \ return b.backend.Start(opts)' tailscale-android/cmd/tailscale/backend.go
+          sed -i 's/Sign in with other/Sign in with Headscale/g' tailscale-android/cmd/tailscale/ui.go
 
       - name: build
         run: |
